@@ -1,0 +1,15 @@
+[project]
+name = "nextgen2026-mlai-workshops"
+version = "0.1.0"
+description = "Jupyter notebooks and package scaffolding for the NextGen ML/AI Workshops."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { file = "LICENCE" }
+dependencies = [
+    "ipykernel>=6.29.0",
+    "notebook>=7.4.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
