@@ -132,6 +132,8 @@ import nextgen2026_mlai_workshops
 
 You do not need to add `src/` to `sys.path` for local development. `uv sync` installs this repository in editable mode, so changes under `src/` are available to the notebook kernel.
 
-For Colab, keep the first setup cell in each workshop notebook. It clones this repository branch and runs an editable install with `pip`, which makes the same package imports available inside the Colab runtime. If you create a new workshop branch, update the branch name in that setup cell.
+For Colab, keep the first setup cell in each workshop notebook. It clones this repository branch and adds the cloned `src/` directory to `sys.path` for the current kernel. If you create a new workshop branch, update the branch name in that setup cell.
 
 Runtime dependencies needed by workshop code should be added to `pyproject.toml` under `[project] dependencies`. Local-only tools such as Jupyter and notebook kernels should stay in the `dev` dependency group.
+
+If you see `ModuleNotFoundError: No module named 'nextgen2026_mlai_workshops'`, run the first setup cell in the notebook. Locally, also confirm the selected kernel is `.venv/bin/python`; in Colab, confirm the setup cell completed without a clone or install error.
