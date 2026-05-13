@@ -885,13 +885,17 @@ wheels = [
 name = "nextgen2026-mlai-workshops"
 version = "0.1.0"
 source = { editable = "." }
-dependencies = [
+
+[package.dev-dependencies]
+dev = [
     { name = "ipykernel" },
     { name = "notebook" },
 ]
 
 [package.metadata]
-requires-dist = [
+
+[package.metadata.requires-dev]
+dev = [
     { name = "ipykernel", specifier = ">=6.29.0" },
     { name = "notebook", specifier = ">=7.4.0" },
 ]

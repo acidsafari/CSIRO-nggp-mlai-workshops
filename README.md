@@ -38,6 +38,12 @@ To open the workshop notebook in Colab:
 5. Choose the branch for your workshop session.
 6. Open:
 
+```text
+notebooks/main.ipynb
+```
+
+When you run the notebook in Colab, run the setup cell at the top first. Colab opens a single notebook from GitHub, but it does not automatically clone the rest of the repository. The setup cell clones the selected workshop branch into `/content/nextgen2026-mlai-workshops` and installs the repository package so notebook code can import workshop utilities.
+
 ### Option 2: Run Locally
 
 For the base development environment, follow the setup process from the NextGen Coding Bootcamp:
@@ -109,3 +115,23 @@ Choose the Python environment for this repository:
 If you are using Windows with WSL, make sure you select the kernel from the WSL/Linux environment, not a Windows Python installation.
 
 Once the kernel is selected, run the notebook cells in order.
+
+## Using Workshop Utilities
+
+Shared Python utilities should live in the package under:
+
+```text
+src/nextgen2026_mlai_workshops/
+```
+
+After running `uv sync` locally and selecting the `.venv/bin/python` kernel, notebooks can import those utilities normally:
+
+```python
+import nextgen2026_mlai_workshops
+```
+
+You do not need to add `src/` to `sys.path` for local development. `uv sync` installs this repository in editable mode, so changes under `src/` are available to the notebook kernel.
+
+For Colab, keep the first setup cell in each workshop notebook. It clones this repository branch and runs an editable install with `pip`, which makes the same package imports available inside the Colab runtime. If you create a new workshop branch, update the branch name in that setup cell.
+
+Runtime dependencies needed by workshop code should be added to `pyproject.toml` under `[project] dependencies`. Local-only tools such as Jupyter and notebook kernels should stay in the `dev` dependency group.

@@ -5,7 +5,10 @@ description = "Jupyter notebooks and package scaffolding for the NextGen ML/AI W
 readme = "README.md"
 requires-python = ">=3.12"
 license = { file = "LICENCE" }
-dependencies = [
+dependencies = []
+
+[dependency-groups]
+dev = [
     "ipykernel>=6.29.0",
     "notebook>=7.4.0",
 ]
