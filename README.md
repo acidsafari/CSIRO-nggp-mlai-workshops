@@ -8,7 +8,7 @@ These workshops are designed to make foundational ML/AI concepts accessible to n
 
 ## How the Workshops Work
 
-Each workshop is structured around a guided notebook that serves as a shared reference point for discussion, experimentation, and collective reasoning during the session.
+Each workshop is structured around guided notebooks that serve as shared reference points for discussion, experimentation, and collective reasoning during the session.
 
 The notebooks include:
 
@@ -29,7 +29,7 @@ Similar to the coding bootcamps we will provide a branch per workshop session.
 
 Google Colab is the easiest option. It runs in your browser, so you do not need to install Python locally.
 
-To open the workshop notebook in Colab:
+To open the first workshop notebook in Colab:
 
 1. Go to [Google Colab](https://colab.research.google.com/).
 2. Select **File > Open notebook**.
@@ -39,10 +39,10 @@ To open the workshop notebook in Colab:
 6. Open:
 
 ```text
-notebooks/main.ipynb
+notebooks/00_learning_from_data.ipynb
 ```
 
-When you run the notebook in Colab, run the setup cell at the top first. Colab opens a single notebook from GitHub, but it does not automatically clone the rest of the repository. The setup cell clones the selected workshop branch into `/content/nextgen2026-mlai-workshops` and installs the repository package so notebook code can import workshop utilities.
+When you run a notebook in Colab, run the setup cell at the top first. Colab opens a single notebook from GitHub, but it does not automatically clone the rest of the repository. The setup cell clones the selected workshop branch into `/content/nextgen2026-mlai-workshops` and installs the repository package so notebook code can import workshop utilities.
 
 ### Option 2: Run Locally
 
@@ -76,11 +76,13 @@ Open in VS Code:
 code .
 ```
 
-Each workshop branch contains the main notebook at:
+Workshop 1 starts at:
 
 ```text
-notebooks/main.ipynb
+notebooks/00_learning_from_data.ipynb
 ```
+
+The remaining numbered notebooks continue the workshop sequence.
 
 ### Step 2: Install the workshop environment
 
@@ -97,10 +99,10 @@ This installs the Python environment and all dependencies needed for the worksho
 In VS Code, open:
 
 ```text
-notebooks/main.ipynb
+notebooks/00_learning_from_data.ipynb
 ```
 
-The notebook is the shared reference point for the workshop discussion, demonstrations, and experiments.
+The numbered notebooks are the shared reference points for the workshop discussion, demonstrations, and experiments.
 
 ### Step 4: Select the notebook kernel
 

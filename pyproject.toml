@@ -5,7 +5,10 @@ description = "Jupyter notebooks and package scaffolding for the NextGen ML/AI W
 readme = "README.md"
 requires-python = ">=3.12"
 license = { file = "LICENCE" }
-dependencies = []
+dependencies = [
+    "matplotlib>=3.9.0",
+    "numpy>=2.1.0",
+]
 
 [dependency-groups]
 dev = [

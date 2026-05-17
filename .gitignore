@@ -2,6 +2,10 @@
 __pycache__/
 *.py[codz]
 *$py.class
+docs/
+.agents
+.codex
+.uv-cache
 
 # C extensions
 *.so
