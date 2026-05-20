@@ -3,8 +3,6 @@ __pycache__/
 *.py[codz]
 *$py.class
 docs/*
-!docs/session_plans/
-!docs/session_plans/*.md
 .agents
 .codex
 .uv-cache
