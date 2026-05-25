@@ -74,22 +74,54 @@ def display_markdown(text):
 
 
 def format_cell(value):
+    if isinstance(value, bool):
+        return str(value)
     if isinstance(value, (float, np.floating)):
         return f"{value:.4g}"
     if isinstance(value, (int, np.integer)):
         return str(int(value))
     if value is None:
         return ""
-    return str(value).replace("|", "\\|")
+    return str(value).replace("\n", " ").replace("|", "\\|")
+
+
+def is_numeric_cell(value):
+    return isinstance(value, (int, float, np.integer, np.floating)) and not isinstance(value, bool)
 
 
 def markdown_table(headers, rows):
-    lines = [
-        "| " + " | ".join(headers) + " |",
-        "|" + "|".join(["---"] * len(headers)) + "|",
+    row_values = [list(row) for row in rows]
+    column_count = max([len(headers), *(len(row) for row in row_values)] or [0])
+    padded_headers = [str(headers[index]) if index < len(headers) else "" for index in range(column_count)]
+    padded_rows = [
+        [row[index] if index < len(row) else "" for index in range(column_count)]
+        for row in row_values
     ]
-    for row in rows:
-        lines.append("| " + " | ".join(format_cell(item) for item in row) + " |")
+    formatted_rows = [[format_cell(item) for item in row] for row in padded_rows]
+    numeric_columns = [
+        bool(padded_rows) and all(is_numeric_cell(row[index]) for row in padded_rows if row[index] != "")
+        for index in range(column_count)
+    ]
+    widths = [
+        max(3, len(padded_headers[index]), *(len(row[index]) for row in formatted_rows))
+        for index in range(column_count)
+    ]
+    lines = [
+        "| " + " | ".join(padded_headers[index].ljust(widths[index]) for index in range(column_count)) + " |",
+        "| " + " | ".join(
+            ("-" * max(3, widths[index] - 1) + ":").rjust(widths[index])
+            if numeric_columns[index]
+            else (":" + "-" * max(3, widths[index] - 1)).ljust(widths[index])
+            for index in range(column_count)
+        ) + " |",
+    ]
+    for row in formatted_rows:
+        lines.append(
+            "| " + " | ".join(
+                row[index].rjust(widths[index]) if numeric_columns[index] else row[index].ljust(widths[index])
+                for index in range(column_count)
+            ) + " |"
+        )
     return "\n".join(lines)
 
 

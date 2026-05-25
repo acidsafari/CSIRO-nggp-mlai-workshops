@@ -2,10 +2,13 @@
 __pycache__/
 *.py[codz]
 *$py.class
-docs/*
+# docs/*
 .agents
 .codex
 .uv-cache
+docs/
+notebooks_archive/
+notebooks_instructor/
 
 # C extensions
 *.so

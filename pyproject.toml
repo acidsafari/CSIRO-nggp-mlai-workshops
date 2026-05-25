@@ -8,6 +8,7 @@ license = { file = "LICENCE" }
 dependencies = [
     "matplotlib>=3.9.0",
     "numpy>=2.1.0",
+    "torch>=2.3.0",
 ]
 
 [dependency-groups]
